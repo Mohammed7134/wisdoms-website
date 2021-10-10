@@ -4,7 +4,7 @@ $response = array();
 require_once '../../includes/DbOperations.php';
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $db = new DbOperations();
-    $result = $db->loadBoOmarDb2();
+    $result = $db->loadBoOmarDb3();
     if ($result !== false) {
         $response['error'] = false;
         $response['wisdoms'] = $result;

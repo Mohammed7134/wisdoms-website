@@ -329,6 +329,26 @@ class DbOperations
             return false;
         }
     }
+    public function loadBoOmarDb3()
+    {
+        $wisdoms = array();
+        $stmt = $this->conn->prepare("SELECT wisdom FROM boOmarDb3");
+        if ($stmt->execute()) {
+            $stmt->bind_result($wisdomColumn);
+            while ($stmt->fetch()) {
+                if (!empty($wisdomColumn)) {
+                    $wisdom = array();
+                    $wisdom['categories'] = array();
+                    array_push($wisdom['categories'], "جديدة ٣");
+                    $wisdom['wisdomText'] = $wisdomColumn;
+                    array_push($wisdoms, $wisdom);
+                }
+            }
+            return $wisdoms;
+        } else {
+            return false;
+        }
+    }
     public function retrieveWisdomById($id)
     {
         $stmt = $this->conn->prepare("SELECT id, wisdomText FROM wisdom WHERE id = ?");
