@@ -21,7 +21,7 @@
 
 <body>
     <div class="wrapper">
-        <nav id="sidebar">
+        <!-- <nav id="sidebar">
             <div class="sidebar-header">
                 <h3>جميع التصنيفات</h3>
             </div>
@@ -29,7 +29,7 @@
                 <p>تصفح التصنيفات</p>
             </ul>
         </nav>
-        <button id="xmark" type="button" aria-label="Close" class="btn-close"></button>
+        <button id="xmark" type="button" aria-label="Close" class="btn-close"></button> -->
         <!-- Sidebar  -->
         <!-- Page Content  -->
         <div id="content">
@@ -42,7 +42,7 @@
 
                 </div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid"><button class="btn btn-info" type="button" id="sidebarCollapse"><i class="fas fa-align-left" aria-hidden="true"></i></button><a class="navbar-brand" href="/home">الرئيسية</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="fas fa-search" aria-hidden="true"></span></button>
+                    <div class="container-fluid"><a class="navbar-brand" href="/home">الرئيسية</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="fas fa-search" aria-hidden="true"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item"></li>

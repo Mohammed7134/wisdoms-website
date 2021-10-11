@@ -23,25 +23,25 @@ const changeLogLabel = () => {
     }
 }
 
-const loadCategoriesAxios = async () => {
-    try {
-        const res = await axios.get("/v1/php/getAllCategories.php?api=true");
-        const categories = await res.data.categories;
-        const list = document.querySelector("ul");
-        for (let category of categories) {
-            const li = document.createElement("li");
-            const link = document.createElement("a");
-            link.setAttribute("href", `/explore?categoryId=${category.id}`);
-            link.classList.add("category-link");
-            link.innerText = category.name;
-            li.append(link);
-            list.append(li);
-        }
-    } catch (e) {
-        console.log("error: ", e)
-    }
+// const loadCategoriesAxios = async () => {
+//     try {
+//         const res = await axios.get("/v1/php/getAllCategories.php?api=true");
+//         const categories = await res.data.categories;
+//         const list = document.querySelector("ul");
+//         for (let category of categories) {
+//             const li = document.createElement("li");
+//             const link = document.createElement("a");
+//             link.setAttribute("href", `/explore?categoryId=${category.id}`);
+//             link.classList.add("category-link");
+//             link.innerText = category.name;
+//             li.append(link);
+//             list.append(li);
+//         }
+//     } catch (e) {
+//         console.log("error: ", e)
+//     }
 
-}
+// }
 
 const createWisdom = (wisdom) => {
     let editLink = `<a class='edit-link me-3' href='edit/edit?wisdomId=${wisdom.id}'>تعديل</a>`;
@@ -133,11 +133,11 @@ const setUpSearchPage = async (params) => {
     counter.innerHTML += "<br>"
     counter.innerHTML += `عدد النتائج: ${wisdomsArray.length}`
 }
-const setUpExploreCategoryPage = async (params) => {
-    const catId = params.get('categoryId');
-    const res = await axios.get(`/v1/php/exploreCategory.php?categoryId=${catId}`);
-    wisdomsArray = res.data.wisdoms;
-}
+// const setUpExploreCategoryPage = async (params) => {
+//     const catId = params.get('categoryId');
+//     const res = await axios.get(`/v1/php/exploreCategory.php?categoryId=${catId}`);
+//     wisdomsArray = res.data.wisdoms;
+// }
 
 const loadWisdoms = async function () {
     await checkLogStatus();
@@ -162,18 +162,18 @@ const loadWisdoms = async function () {
 
 function addfn() {
     $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-            $('#xmark').toggleClass('show');
-            $('#content').toggleClass('inactive');
-            $('body').toggleClass('scroll-disable');
-        });
-        $('#xmark').on('click', function () {
-            $('#sidebar').toggleClass('active');
-            $('#xmark').toggleClass('show');
-            $('#content').toggleClass('inactive');
-            $('body').toggleClass('scroll-disable');
-        });
+        // $('#sidebarCollapse').on('click', function () {
+        //     $('#sidebar').toggleClass('active');
+        //     $('#xmark').toggleClass('show');
+        //     $('#content').toggleClass('inactive');
+        //     $('body').toggleClass('scroll-disable');
+        // });
+        // $('#xmark').on('click', function () {
+        //     $('#sidebar').toggleClass('active');
+        //     $('#xmark').toggleClass('show');
+        //     $('#content').toggleClass('inactive');
+        //     $('body').toggleClass('scroll-disable');
+        // });
         // Increase/descrease font size
         $('.plus').bind("click", function () {
             curSize = parseInt($('.quote-text').css('font-size')) + 2;
@@ -209,18 +209,18 @@ async function showMore() {
 }
 
 const downloadData = async () => {
-    await loadCategoriesAxios();
+    // await loadCategoriesAxios();
     await loadWisdoms();
     addfn();
     document.getElementById("showMoreBtn").addEventListener("click", showMore);
     document.getElementById("loading").style.display = "none";
 }
 const downloadLog = async () => {
-    await loadCategoriesAxios();
+    // await loadCategoriesAxios();
     addfn();
 }
 if (document.URL.includes("edit")) {
-    loadCategoriesAxios();
+    // loadCategoriesAxios();
     loadWisdoms();
     addfn();
 } else if (document.URL.includes("login")) {
