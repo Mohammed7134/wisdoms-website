@@ -5,5 +5,5 @@
     <!-- To be filled by javascript -->
 </div>
 <div class="d-flex justify-content-center">
-    <button id="showMoreBtn" class="btn bg-info mb-2">أظهر المزيد</button>
+    <button id="showMoreBtn" class="btn gradient-custom mb-2">أظهر المزيد</button>
 </div>

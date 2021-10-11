@@ -1,6 +1,6 @@
 <footer>
    <div class="jumbotron text-center">
-      <p>موقع شذرات<br> جميع الحقوق محفوظة ©<span id="year">2021</span></p>
+      <p>موقع فقه الحياة<br> جميع الحقوق محفوظة ©<span id="year">2021</span></p>
       <p><a href="https://www.instagram.com/dr.almotawa" target="_blank"><img src="/v1/images/Instagram-Dr-Abdulaziz.png" alt="instagram.com " class="social-media-icon"></a><a href="https://www.twitter.com/dralmotawaa" target="_blank"><img src="/v1/images/Twitter-Dr-Abdulaziz.png" alt="twitter.com" class="social-media-icon"></a></p>
    </div>
 </footer>

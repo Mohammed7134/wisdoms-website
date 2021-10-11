@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>شذرات</title>
+    <title>فقه الحياة</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
     <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="/v1/css/styleSheet1.css">
+    <link rel="stylesheet" href="/v1/css/styleSheet.css">
     <!-- Font Awesome JS -->
     <script src="https://kit.fontawesome.com/00a20bfa02.js" crossorigin="anonymous"></script>
     <!-- Axios Library -->
@@ -35,8 +35,8 @@
         <div id="content">
             <header>
                 <div class="jumbotron text-center" style="margin-bottom: 0px;">
-                    <h1>شذرات</h1>
-                    <p>حكما تنير لك طريقك في الحياة باذن الله</p>
+                    <h1>فقه الحياة</h1>
+                    <p>حكما تنير لك طريقك في الحياة بإذن الله</p>
                     <a class="login-link" href="/login">سجل الدخول</a>
                     <form method="post" action="/v1/php/endSession.php"><button class="logout-button" type="submit" style="margin:auto;display:none;">تسجيل الخروج</button></form>
 
