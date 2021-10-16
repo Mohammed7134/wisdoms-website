@@ -8,20 +8,34 @@ let wisdomsArray = [];
 let logStatus = false;
 let errorMessage = "";
 var wisdomsIds = [];
-let length = document.querySelector(".number-of-messages");
-const setVis = () => {
+let numberOfMessages = document.querySelector(".number-of-messages");
+let allText = "";
+
+
+if (myStorage.getItem("wisdoms")) {
+    wisdomsIds = JSON.parse(myStorage.getItem("wisdoms"));
+}
+const setNumVis = async () => {
+    let shareButton = document.querySelector(".share-link");
+    allText = "";
     if (wisdomsIds.length === 0) {
-        length.style.display = "none";
+        numberOfMessages.style.display = "none";
+        shareButton.removeAttribute("href");
     } else {
-        length.style.display = "flex";
+        shareButton.innerHTML = '<div class="spinner-border" role="status"></div>';
+        for (let i = 0; i < wisdomsIds.length; i++) {
+            const res = await axios.get(`/v1/php/getWisdomById.php?api=true&id=${wisdomsIds[i]}`);
+            let wisdom = await res.data.wisdom;
+            allText += wisdom.text;
+            allText += '\n\n';
+        }
+        numberOfMessages.innerText = wisdomsIds.length;
+        numberOfMessages.style.display = "flex";
+        shareButton.innerHTML = '<i class="fab fa-whatsapp fa-2x" style="color:green" aria-hidden="true"></i>';
+        shareButton.setAttribute("href", `whatsapp://send?text=${encodeURI(allText + '\n' + authorWhats)}`);
     }
 }
-if (myStorage.getItem("wisdoms")) {
-    let arr = JSON.parse(myStorage.getItem("wisdoms"));
-    wisdomsIds = arr;
-    length.innerText = wisdomsIds.length;
-    setVis();
-}
+setNumVis();
 
 String.prototype.removeNBSP = function () {
     return this.replace(/&nbsp;/g, ' ').replace(/&#160;/g, ' ').replace(/\u00a0/g, ' ');
@@ -58,27 +72,9 @@ const loadCategoriesAxios = async () => {
     }
 
 }
-let allText = "";
-const getAllSelectedWisdoms = async () => {
-    allText = "";
-    for (let i = 0; i < wisdomsIds.length; i++) {
-        const res = await axios.get(`/v1/php/getWisdomById.php?api=true&id=${wisdomsIds[i]}`);
-        let wisdom = await res.data.wisdom;
-        allText += wisdom.text;
-        allText += '\n\n';
-    }
-}
-const setSend = async () => {
-    let shareButton = document.querySelector(".share-link");
-    await getAllSelectedWisdoms();
-    shareButton.setAttribute("href", `whatsapp://send?text=${encodeURI(allText + '\n' + authorWhats)}`);
-    if (wisdomsIds.length === 0) { shareButton.removeAttribute("href"); } else { shareButton.setAttribute("href", `whatsapp://send?text=${encodeURI(allText + '\n' + authorWhats)}`); }
-}
-
-const createWisdom = (wisdom) => {
-    let shareLink = document.createElement("button");
-    let index = wisdom.id;
-    shareLink.onclick = () => {
+const shareAction = async (wisdom, shareLink) => {
+    shareLink.onclick = async () => {
+        let index = wisdom.id;
         if (wisdomsIds.includes(index)) {
             for (var i = 0; i < wisdomsIds.length; i++) {
                 if (wisdomsIds[i] === index) {
@@ -92,11 +88,14 @@ const createWisdom = (wisdom) => {
             shareLink.innerText = "إزالة";
             shareLink.style.backgroundColor = "red";
         }
-        setVis();
-        setSend();
         myStorage.setItem("wisdoms", JSON.stringify(this.wisdomsIds));
-        length.innerText = wisdomsIds.length;
+        await setNumVis();
     }
+}
+
+const createWisdom = async (wisdom) => {
+    let shareLink = document.createElement("button");
+    await shareAction(wisdom, shareLink);
     let editLink = document.createElement("a");
     editLink.classList.add("edit-link", "me-3");
     editLink.setAttribute("href", `edit/edit?wisdomId=${wisdom.id}`);
@@ -138,7 +137,7 @@ const createWisdom = (wisdom) => {
 
 const appendWisdom = async (i, edit) => {
     changeLogLabel();
-    document.querySelector(".inner-content").append(createWisdom(wisdomsArray[i]));
+    document.querySelector(".inner-content").append(await createWisdom(wisdomsArray[i]));
     curSize = parseInt($('.quote-text').css('font-size'));
 }
 
@@ -315,4 +314,3 @@ if (document.URL.includes("edit")) {
 } else {
     downloadData();
 }
-setSend();

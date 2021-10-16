@@ -67,7 +67,8 @@
                 <div class="jumbotron text-center" style="margin-bottom: 0px;">
                     <h1>فقه الحياة</h1>
                     <p></p>
-                    <a class="login-link" href="/login">سجل الدخول</a>
+                    <p><a href="https://www.instagram.com/dr.almotawa" target="_blank">dr.almotawa <img src="/v1/images/Instagram-Dr-Abdulaziz.png" alt="instagram.com " class="social-media-icon"></a></p>
+                    <p><a href="https://www.twitter.com/dralmotawaa" target="_blank">dralmotawaa <img src="/v1/images/Twitter-Dr-Abdulaziz.png" alt="twitter.com" class="social-media-icon"></a></p>
                     <form method="post" action="/v1/php/endSession.php"><button class="logout-button" type="submit" style="margin:auto;display:none;">تسجيل الخروج</button></form>
 
                 </div>
