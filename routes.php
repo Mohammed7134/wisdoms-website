@@ -15,6 +15,10 @@ get('/search?searchText=$searchText', 'index.php');
 get('/explore?categoryId=$categoryId', 'index.php');
 get('/login', 'login.php');
 get('/edit/$wisdomDetail', 'edit.php');
+get('/categories', 'categories.php');
+get('/test/$wisdomDetail', 'test.html');
+get('/edit/$wisdomDetail', 'edit.php');
+get('/about', 'about.php');
 
 any("/404", "/index.php");
 

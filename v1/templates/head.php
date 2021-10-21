@@ -20,35 +20,48 @@
 
 </head>
 <style>
-    .floating {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        clip-path: circle(50%);
-        background-color: rgb(221, 255, 221);
+    /* h1 {
+        font-size: 464%;
+    } */
+
+    /* i {
+        font-size: 214%;
+    } */
+
+    img {
+        width: 282px;
+        height: 282px;
+        object-fit: cover;
+        object-position: 20% 10%;
     }
 
-    .number-of-messages {
-        position: fixed;
-        bottom: 35px;
-        right: 19px;
-        width: 20px;
-        height: 20px;
-        clip-path: circle(50%);
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    .division0 {
+        /* background: #d9d9d9; */
+        margin: 5%;
+        padding: 2%;
+        text-align: center;
+    }
+
+    .division1 {
+        background: white;
+        margin: 2%;
+    }
+
+    .division2 {
+        text-align: right;
+        margin-top: 0%;
+        margin-bottom: 0%;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+
+    .nav-item {
+        padding-right: 10px;
     }
 </style>
 
 <body>
-    <a class="floating share-link me-3" data-action="share/whatsapp/share"><i class="fab fa-whatsapp fa-2x" style="color:green" aria-hidden="true"></i></a>
+    <a class="floating share-link me-3" data-action="share/whatsapp/share"><i class="fab fa-whatsapp fa-2x" style="color:black" aria-hidden="true"></i></a>
     <p class="number-of-messages"></p>
     <div class="wrapper">
         <nav id="sidebar">
@@ -56,30 +69,39 @@
                 <h3>جميع التصنيفات</h3>
             </div>
             <ul class="list-unstyled components">
-                <p>تصفح التصنيفات</p>
+                <!-- <p>تصفح التصنيفات</p> -->
             </ul>
         </nav>
         <button id="xmark" type="button" aria-label="Close" class="btn-close"></button>
         <!-- Sidebar  -->
         <!-- Page Content  -->
+        <!-- <button class="btn btn-info" type="button" id="sidebarCollapse"><i class="fas fa-align-left" aria-hidden="true"></i></button> -->
         <div id="content">
             <header>
                 <div class="jumbotron text-center" style="margin-bottom: 0px;">
                     <h1>فقه الحياة</h1>
-                    <p></p>
-                    <p><a href="https://www.instagram.com/dr.almotawa" target="_blank">dr.almotawa <img src="/v1/images/Instagram-Dr-Abdulaziz.png" alt="instagram.com " class="social-media-icon"></a></p>
-                    <p><a href="https://www.twitter.com/dralmotawaa" target="_blank">dralmotawaa <img src="/v1/images/Twitter-Dr-Abdulaziz.png" alt="twitter.com" class="social-media-icon"></a></p>
+                    <p>مقولات الدكتور عبدالعزيز فيصل المطوع</p>
                     <form method="post" action="/v1/php/endSession.php"><button class="logout-button" type="submit" style="margin:auto;display:none;">تسجيل الخروج</button></form>
-
                 </div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <div class="container-fluid"><button class="btn btn-info" type="button" id="sidebarCollapse"><i class="fas fa-align-left" aria-hidden="true"></i></button><a class="navbar-brand" href="/home">الرئيسية</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="fas fa-search" aria-hidden="true"></span></button>
+
+                    <div class="container-fluid">
+                        <button class="btn btn-info" type="button" id="sidebarCollapse" style="background-color: #9bafca; border-color: #9bafca;"><i class="fas fa-align-left" aria-hidden="true"></i></button>
+                        <a class="navbar-brand" href="/home">الرئيسية</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon" aria-hidden="true"></span>
+                        </button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item"></li>
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                                <!-- <li class="nav-item">
+                                    <a href="/categories" class="nav-link active" aria-current="page">التصنيفات</a>
+                                </li> -->
+                                <li class="nav-item">
+                                    <a href="/about" class="nav-link active" aria-current="page">عن الموقع</a>
+                                </li>
                             </ul>
                             <form class="form-inline me-2 me-lg-0" action="/search" method="GET" name="search">
-                                <div class="search-form"><input class="form-control ms-sm-2" type="search" placeholder="أدخل كلمة البحث" aria-label="بحث" name="searchText"><button class="btn btn-outline-success " type="submit">بحث</button></div>
+                                <div class="search-form"><input class="form-control ms-sm-2" type="search" placeholder="أدخل كلمة البحث" aria-label="بحث" name="searchText"><button class="btn btn-outline-primary " type="submit">بحث</button></div>
                             </form>
                         </div>
                     </div>
@@ -87,9 +109,12 @@
                 <div class="container">
                     <div class="row justify-content-between mt-2">
                         <div class="col-8 col-2-md counter"></div>
-                        <div class="font-size-control col-3 col-2-md">
-                            <div class="btn-group" role="group" aria-label="font size control"><button type="button" class="btn btn-outline-primary plus">+</button><button type="button" class="btn btn-outline-primary minus">-</button></div>
+                        <div class="font-size-controls col-3 col-2-md">
+
                         </div>
+                        <h3 class="category-name"></h3>
+
+                        <p style="display: inline;" class="category-number"></p>
                     </div>
                 </div>
             </header>

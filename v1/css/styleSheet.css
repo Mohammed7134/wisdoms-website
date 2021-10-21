@@ -114,7 +114,7 @@ SIDEBAR STYLE
 
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6d7fcc;
+  background: #9bafca;
   text-align: right;
 }
 
@@ -238,6 +238,9 @@ CONTENT STYLE
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(to bottom, rgba(215, 215, 215, 0.4), rgba(146, 146, 146, 0.4))
 }
+.add-button {
+  display: none;
+}
 /* ---------------------------------------------------
 MEDIAQUERIES
 ----------------------------------------------------- */
@@ -275,7 +278,39 @@ MEDIAQUERIES
     visibility: visible;
     z-index: 1;
   }
+  .add-button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
   .share-link {  
-    display: inline;  
+    position: fixed;
+      bottom: 20px;
+        right: 20px;
+      width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        clip-path: circle(50%);
+        background-color: #f1f1f1;
   }  
+  .number-of-messages {
+    position: fixed;
+    bottom: 35px;
+    right: 19px;
+    width: 20px;
+    height: 20px;
+    clip-path: circle(50%);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .add-button {
+    display: inline;
+  }
 }

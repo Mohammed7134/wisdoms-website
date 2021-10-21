@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css"
+        integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="/v1/css/styleSheet4.css">
+    <!-- Font Awesome JS -->
+    <script src="https://kit.fontawesome.com/00a20bfa02.js" crossorigin="anonymous"></script>
+    <!-- Axios Library -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<style>
+    body {
+        text-align: center;
+    }
+
+    h1 {
+        color: green;
+    }
+
+    canvas {
+        border: 2px solid green;
+        display: none;
+    }
+
+    .scrollDiv {
+        overflow: auto;
+        white-space: nowrap;
+    }
+</style>
+
+
+<body id="body">
+    <nav class="navbar sticky-top navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://farwaniyapharmacist.online">الرئيسية</a>
+            <div class="d-flex">
+                <a class="nav-link back-link">الرجوع</a>
+            </div>
+        </div>
+
+    </nav>
+    <canvas id="myCanvas" width="1300" height="1600"></canvas>
+    <div class="scrollDiv">
+        <a id="1"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-1.jpg" alt="blue"></a>
+        <a id="2"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-2.jpg" alt="blue"></a>
+        <a id="3"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-3.jpg" alt="blue"></a>
+        <a id="4"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-4.jpg" alt="blue"></a>
+        <a id="5"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-5.jpg" alt="blue"></a>
+        <a id="6"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-6.jpg" alt="blue"></a>
+        <a id="7"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-7.jpg" alt="blue"></a>
+        <a id="8"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-8.jpg" alt="blue"></a>
+        <a id="9"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-9.jpg" alt="blue"></a>
+        <a id="10"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-10.jpg" alt="blue"></a>
+        <a id="11"><img width="70px" height="90px" src="/v1/images/wisdoms-template-photo-11.jpg" alt="blue"></a>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- jQuery CDN - from googleapis -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+        integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+        integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+    <script>
+        document.querySelector(".back-link").setAttribute("href", document.referrer);
+
+        let imageObj = new Image();
+        function wrapText(context, text, x, y, maxWidth) {
+            let actualLines = 0;
+            var words = text.split(' ');
+            var line = '';
+            for (var n = 0; n < words.length; n++) {
+                var testLine = line + words[n] + ' ';
+                var metrics = context.measureText(testLine);
+                let height = metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent + 45;
+                let fontS = 16000 / text.length;
+                console.dir(context);
+                console.log(fontS);
+                console.log(text.length);
+                if (text.length > 800) {
+                    let startY = 1600 / 2;
+                    context.font = `bold ${35}pt Calibri`;
+                    context.textAlign = "center";
+                    context.fillText("حجم الحكمة أكبر من القالب", x, startY);
+                } else {
+                    if (fontS > 64) {
+                        context.font = `bold ${64}pt Calibri`;
+                    } else if (fontS < 30) {
+                        context.font = `bold ${30}pt Calibri`;
+                    } else {
+                        context.font = `bold ${fontS}pt Calibri`;
+                    }
+
+                    var testWidth = metrics.width;
+                    if (testWidth > maxWidth && n > 0) {
+                        let lines = (text.length / line.length) - 1;
+                        let newHeight = lines * height;
+                        let startY = (1600 - (y + newHeight)) / 2;
+                        context.textAlign = "center";
+                        if (actualLines === 0) {
+                            context.fillText(line, x, startY);
+                            actualLines++;
+                            line = words[n] + ' ';
+                            y = startY + height;
+                        } else {
+                            context.fillText(line, x, y);
+                            actualLines++;
+                            line = words[n] + ' ';
+                            y += height;
+                        }
+
+                    } else {
+                        line = testLine;
+                    }
+                }
+            }
+            if (actualLines === 0) {
+                var metrics = context.measureText(testLine);
+                let height = metrics.fontBoundingBoxAscent - metrics.fontBoundingBoxDescent + 35;
+                let fontS = 20000 / text.length;
+                let lines = text.length / line.length;
+                let newHeight = lines * height;
+                let startY = (1600 - (y + newHeight)) / 2;
+                context.textAlign = "center";
+                context.fillText(line, x, startY);
+            } else {
+                context.fillText(line, x, y);
+            }
+        }
+        const params = new URLSearchParams(window.location.search);
+        const wisdomId = params.get("wisdomId");
+        const color = params.get("color");
+        imageObj.onload = async function () {
+
+            const res = await axios.get(`/v1/php/getWisdomById.php?api=true&id=${wisdomId}`);
+            let wisdom = await res.data.wisdom;
+            var text = wisdom.text;
+
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            context.drawImage(imageObj, 0, 0);
+            var metrics = context.measureText(text);
+            var maxWidth = 850;
+            var x = canvas.width / 2;
+            var y = 200;
+
+            context.fillStyle = '#333';
+
+            wrapText(context, text, x, y, maxWidth);
+            function convertCanvasToImage() {
+                let canvas1 = document.getElementById("myCanvas");
+                let image = new Image();
+                image.src = canvas1.toDataURL('image/png', 1.0);
+                image.style.maxWidth = "100%";
+                image.style.height = "auto";
+                image.classList.add("image-main")
+                return image;
+            }
+
+            let pnGImage = convertCanvasToImage();
+            let body = document.getElementById("body");
+            body.appendChild(pnGImage);
+        }
+        imageObj.src = `/v1/images/wisdoms-template-photo-${color}.jpg`;
+
+        for (let i = 1; i < 12; i++) {
+            const link = document.getElementById(i);
+            // link.setAttribute("href", `http://farwaniyapharmacist.online/test/test?wisdomId=${wisdomId}&color=${i}`);
+            link.addEventListener('click', function () {
+                document.querySelector(".image-main").remove();
+                imageObj.src = `/v1/images/wisdoms-template-photo-${i}.jpg`;
+            });
+        }
+    </script>
+
+</body>
+
+</html>
