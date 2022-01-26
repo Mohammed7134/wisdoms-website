@@ -1,7 +1,7 @@
 <?php
 session_start();
 $response = array();
-require_once '../../../etc/includes/DbOperations.php';
+require_once '../../includes/DbOperations.php';
 $cookie = isset($_COOKIE['rememberme']) ? $_COOKIE['rememberme'] : '';
 if (!isset($_SESSION['logged in'])) {
     if ($cookie) {

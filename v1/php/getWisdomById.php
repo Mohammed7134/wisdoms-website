@@ -3,7 +3,7 @@ if (isset($_GET['api'])) {
     session_start();
 }
 $response = array();
-require_once '../../../etc/includes/DbOperations.php';
+require_once '../../includes/DbOperations.php';
 $db = new DbOperations();
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {

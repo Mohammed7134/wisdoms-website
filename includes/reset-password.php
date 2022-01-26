@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo ("not same");
             exit();
         }
-        require_once '../../../etc/includes/DbAuth.php';
+        require_once '../../includes/DbAuth.php';
         $currentDate = date("U");
 
-        require_once '../../../etc/includes/DbAuth.php';
+        require_once '../../includes/DbAuth.php';
         $db = new DbAuth();
 
         $db->resetPwdSubmit($selector, $currentDate, $passwordRepeat, $validator);

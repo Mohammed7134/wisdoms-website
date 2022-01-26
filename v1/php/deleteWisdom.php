@@ -3,7 +3,7 @@ session_start();
 $response = array();
 if (isset($_SESSION['logged in'])) {
     $logState = $_SESSION['logged in'];
-    require_once '../../../etc/includes/DbOperations.php';
+    require_once '../../includes/DbOperations.php';
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && $logState == "true") {
 
         $inputJSON = file_get_contents('php://input');
