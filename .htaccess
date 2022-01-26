@@ -19,4 +19,4 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^getRandomQuote$ "v1/php/getRandomWisdom.php"
 
 RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteRule !.*\.php$ %{REQUEST_FILENAME}.php [QSA,L]
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}v1/php/getRandomWisdom.php [QSA,L]
