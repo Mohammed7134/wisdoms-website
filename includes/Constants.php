@@ -1,7 +1,7 @@
 <?php
 define('DB_USERNAME', 'dralmota_AboYous');
 define('DB_PASSWORD', 'YsDmSaDb1');
-define('DB_HOST', 'www.dralmotawa.com');
+define('DB_HOST', '162.241.218.130');
 define('DB_NAME', 'dralmota_shatharat');
 
 define('OBJECT_CREATED', 0);
