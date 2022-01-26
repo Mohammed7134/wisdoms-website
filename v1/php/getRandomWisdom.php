@@ -1,12 +1,12 @@
 <?php
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    require_once '../../../etc/includes/DbOperations.php';
-    $db = new DbOperations();
-    $result = $db->getRandomWisdom();
-    if ($result !== false) {
+    // require_once '../../../etc/includes/DbOperations.php';
+    // $db = new DbOperations();
+    // $result = $db->getRandomWisdom();
+    if (true !== false) {
         $response['status'] = 200;
-        $response['wisdom'] = $result;
+        $response['wisdom'] = "result";
     } else {
         $response['status'] = 400;
         $response['message'] = "Something went wrong";
