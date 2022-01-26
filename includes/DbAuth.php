@@ -15,7 +15,18 @@ class DbAuth
     {
         $this->conn->close();
     }
-
+    private function storeTokenForUser($user, $token)
+    {
+        $sql = "UPDATE users SET token = ? WHERE username = ?;";
+        $stmt = mysqli_stmt_init($this->conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            return OBJECT_NOT_CREATED;
+        }
+        mysqli_stmt_bind_param($stmt, "ss", $token, $user);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        return OBJECT_CREATED;
+    }
     public function userLogin($username, $password)
     {
         $usernameExists = $this->isUserExist($username);
@@ -31,6 +42,12 @@ class DbAuth
                 $user['id'] = $usernameExists['id'];
                 $user['username'] = $usernameExists['username'];
                 $user['admin'] = $usernameExists['admin'];
+                $token = md5(time()); // generate a token, should be 128 - 256 bit
+                $this->storeTokenForUser($usernameExists['username'], $token);
+                $cookie = $usernameExists['username'] . ':' . $token;
+                $mac = hash_hmac('sha256', $cookie, "MOHAMMED_ASRAA");
+                $cookie .= ':' . $mac;
+                setcookie('rememberme', $cookie, time() + 60 * 60 * 24 * 30 * 24, "/");
                 return $user;
             } else {
                 return "Unexpected Error";

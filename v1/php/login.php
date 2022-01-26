@@ -1,5 +1,5 @@
 <?php
-require_once '../../includes/DbAuth.php';
+require_once '../../../etc/includes/DbAuth.php';
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -11,9 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $response['error'] = false;
             $response['user'] = $result;
             session_start();
-            setcookie("status-log", "true", 31536000, "/");
             $_SESSION['logged in'] = "true";
-            $_SESSION['admin'] = $response['user']['admin'] == 'true' ? true : false;
         } else if ($result == ACCOUNT_INACTIVE) {
             $response['error'] = true;
             $response['message'] = 'Your account is not yet accepted by admin';
@@ -38,6 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if (isset($_GET['api'])) {
     echo json_encode($response);
 } else {
-    header("Location: ../../home");
+    header("Location: ../../");
     exit;
 }

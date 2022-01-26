@@ -4,6 +4,7 @@
     </div>
     <!-- To be filled by javascript -->
 </div>
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center" id="loadMore">
     <button id="showMoreBtn" class="btn gradient-custom mb-2">أظهر المزيد</button>
+    <div class="spinner-border spinner-border-load-more" role="status" style="display: none;"></div>
 </div>

@@ -3,7 +3,7 @@ if (isset($_GET['api'])) {
     session_start();
 }
 $response = array();
-require_once '../../includes/DbOperations.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../etc/includes/DbOperations.php';
 $db = new DbOperations();
 $result = $db->getAllWisdoms();
 if ($result !== false) {

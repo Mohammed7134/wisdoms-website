@@ -9,16 +9,17 @@ if (isset($_SESSION['logged in'])) {
         $inputJSON = file_get_contents('php://input');
         $input = json_decode($inputJSON, TRUE); //convert JSON into array
 
-        if (isset($input['wisdom']) && isset($input['categories'])) {
+        if (isset($input['wisdomId'])) {
 
             $db = new DbOperations();
-            $result = $db->createWisdom($input['wisdom'], $input['categories']);
-            if ($result == false) {
+            $result1 = $db->addWisdomDeleted(intval($input['wisdomId']));
+            $result2 = $db->removeWisdom(intval($input['wisdomId']));
+            if ($result1 == true && $result2 == true) {
+                $response['error'] = false;
+                $response['message'] = 'Wisdom deleted successfully';
+            } else {
                 $response['error'] = true;
                 $response['message'] = 'Some error occurred';
-            } else {
-                $response['error'] = false;
-                $response['wisdom'] = $result;
             }
         } else {
             $response['error'] = true;

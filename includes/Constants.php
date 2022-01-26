@@ -1,8 +1,8 @@
 <?php
-define('DB_USERNAME', 'AboYousef');
+define('DB_USERNAME', 'dralmota_AboYous');
 define('DB_PASSWORD', 'YsDmSaDb1');
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'shatharat');
+define('DB_HOST', 'www.dralmotawa.com');
+define('DB_NAME', 'dralmota_shatharat');
 
 define('OBJECT_CREATED', 0);
 define('OBJECT_ALREADY_EXIST', 1);

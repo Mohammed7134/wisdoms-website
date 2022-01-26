@@ -1,8 +1,8 @@
 <?php
-session_start();
 include("v1/templates/head.php");
+headerTemplate("تسجيل الدخول - فقه الحياة", true);
 ?>
-<form action="v1/php/login.php" method="post" class="login">
+<form action="/v1/php/login.php" method="post" class="login">
     <div class="container text-start">
         <div class="row mb-3 justify-content-center">
             <div class="col-sm-4">

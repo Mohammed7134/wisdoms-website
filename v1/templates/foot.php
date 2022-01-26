@@ -2,7 +2,8 @@
    <div class="jumbotron text-center">
       <p>موقع فقه الحياة<br> ©<span id="year">2021</span></p>
       <p><a href="https://www.instagram.com/dr.almotawa" target="_blank"><img src="/v1/images/Instagram-Dr-Abdulaziz.png" alt="instagram.com " class="social-media-icon"></a><a href="https://www.twitter.com/dralmotawaa" target="_blank"><img src="/v1/images/Twitter-Dr-Abdulaziz.png" alt="twitter.com" class="social-media-icon"></a></p>
-
+      <a href="/الدكتور-عبدالعزيز-المطوع" class="nav-link active" aria-current="page">عن الموقع</a>
+      <form method="post" action="/v1/php/endSession.php"><button class="logout-button" type="submit" style="margin:auto;display:none;">تسجيل الخروج</button></form>
       <a class="login-link" href="/login">الإدارة</a>
    </div>
 </footer>
