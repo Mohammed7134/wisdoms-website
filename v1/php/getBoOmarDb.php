@@ -1,7 +1,7 @@
 <?php
 session_start();
 $response = array();
-require_once '../../includes/DbOperations.php';
+require_once '../../../etc/includes/DbOperations.php';
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $db = new DbOperations();
     $result = $db->loadBoOmarDb3();

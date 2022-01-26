@@ -1,5 +1,5 @@
 <?php
-require_once '../../includes/DbAuth.php';
+require_once '../../../etc/includes/DbAuth.php';
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['username']) && isset($_POST['password'])) {

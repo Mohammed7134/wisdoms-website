@@ -1,7 +1,7 @@
 <?php
 $response = array();
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    require_once '../../includes/DbOperations.php';
+    require_once '../../../etc/includes/DbOperations.php';
     $db = new DbOperations();
     $result = $db->getRandomWisdom();
     if ($result !== false) {
